@@ -1,0 +1,5 @@
+*
+!*/
+!haskell/*/src/*
+!haskell/*/test/*
+!.gitignore
