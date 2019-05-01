@@ -3,18 +3,21 @@ module Diamond (diamond) where
 nthLetter :: Char -> Int
 nthLetter letter = fromEnum letter - 65
 
-plusMinus :: Int -> Int -> (Int, Int)
-plusMinus a b = (a + b, a - b)
+display :: Char -> Int -> Int -> Char
+display letter mid col
+    | col == left || col == right = letter
+    | otherwise = ' '
+    where
+        shift = nthLetter letter
+        left = mid - shift
+        right = mid + shift
 
 diamond :: Char -> Maybe [String]
 diamond c
     | 'A' <= c && c <= 'Z' = Just $ topHalf ++ reverse (init topHalf)
     | otherwise = Nothing
     where
-        len = nthLetter c * 2 + 1
-        pos = plusMinus (len `div` 2)
-        display col letter
-            | col == left || col == right = letter
-            | otherwise = ' '
-            where (left, right) = pos (nthLetter letter)
-        topHalf = [ [display col row | col <- [0..len - 1]] | row <- ['A'..c] ]
+        len = nthLetter c * 2
+        mid = len `div` 2
+        makeRow letter = map (display letter mid) [0..len]
+        topHalf = map makeRow ['A'..c]
