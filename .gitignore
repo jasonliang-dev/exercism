@@ -2,4 +2,6 @@
 !*/
 !haskell/*/src/*
 !haskell/*/test/*
+!elm/*/*.elm
+!elm/*/tests/*
 !.gitignore
