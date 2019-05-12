@@ -4,4 +4,6 @@
 !haskell/*/test/*
 !elm/*/*.elm
 !elm/*/tests/*
+!clojure/*/src/*
+!clojure/*/test/*
 !.gitignore
