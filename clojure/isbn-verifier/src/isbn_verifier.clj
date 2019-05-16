@@ -10,5 +10,5 @@
 (defn isbn? [isbn]
   (let [xs (toNumberList isbn)]
     (and (= (count xs) 10)
-         (every? #(not (neg? %)) xs)
+         (every? #((complement neg?) %) xs)
          (= (mod (reduce + (map * (range 1 11) xs)) 11) 0))))
