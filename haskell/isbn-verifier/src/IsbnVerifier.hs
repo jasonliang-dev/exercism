@@ -2,6 +2,7 @@ module IsbnVerifier (isbn) where
 
 import Data.Char (isDigit, digitToInt)
 import Control.Applicative (liftA2)
+import Data.Maybe (fromMaybe)
 
 fromCheckDigit :: Char -> Maybe Int
 fromCheckDigit ch
@@ -21,8 +22,8 @@ isbn :: String -> Bool
 isbn [] = False
 isbn xs
     | length cleaned /= 10 = False
-    | otherwise = (sum $ zipWith (*) [10, 9..1] cleaned) `mod` 11 == 0
+    | otherwise = sum (zipWith (*) [10, 9..1] cleaned) `mod` 11 == 0
     where
-        initial = map digitToInt <$> filter isDigit <$> safeInit xs
+        initial = map digitToInt . filter isDigit <$> safeInit xs
         checkDigit = safeLast xs >>= fromCheckDigit
-        cleaned = maybe [] id $ liftA2 (++) initial $ return <$> checkDigit
+        cleaned = fromMaybe [] $ liftA2 (++) initial $ return <$> checkDigit
