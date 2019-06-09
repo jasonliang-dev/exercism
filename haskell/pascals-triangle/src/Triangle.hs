@@ -1,7 +1,4 @@
-module Triangle
-  ( rows
-  )
-where
+module Triangle (rows) where
 
 row :: [Integer] -> [Integer]
 row xs = 1 : snd (foldr buildRow (0, []) xs)
