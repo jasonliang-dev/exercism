@@ -6,4 +6,6 @@
 !elm/*/tests/*
 !clojure/*/src/*
 !clojure/*/test/*
+!prolog/*/*.pl
+!prolog/*/*.plt
 !.gitignore
