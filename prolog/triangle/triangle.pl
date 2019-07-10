@@ -6,8 +6,6 @@ triangle(Side1, Side2, Side3, Type):-
     Side2 < Side1 + Side3,
     Side3 < Side1 + Side2,
     ( Side1 = Side2, Side2 = Side3 -> Type = "equilateral";
-      Side1 = Side2 -> Type = "isosceles";
-      Side2 = Side3 -> Type = "isosceles";
-      Side1 = Side3 -> Type = "isosceles";
-      Type = "scalene"
+      Side1 \= Side2, Side2 \= Side3, Side1 \= Side3 -> Type = "scalene";
+      Type = "isosceles"
     ).
