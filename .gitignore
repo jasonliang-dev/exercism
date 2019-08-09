@@ -8,4 +8,5 @@
 !clojure/*/test/*
 !prolog/*/*.pl
 !prolog/*/*.plt
+!scala/*/src/**
 !.gitignore
