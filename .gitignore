@@ -9,4 +9,5 @@
 !prolog/*/*.pl
 !prolog/*/*.plt
 !scala/*/src/**
+!elisp/*/*.el
 !.gitignore
